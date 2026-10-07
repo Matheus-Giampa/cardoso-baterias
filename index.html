@@ -133,7 +133,7 @@
 <!-- ============ HERO ============ -->
 <section id="inicio" class="relative isolate overflow-hidden bg-navy-950 text-white">
   <!-- fundo animado (shader WebGL, baseado no ShaderGradient "waterPlane") -->
-  <canvas id="fundo-shader" class="absolute inset-0 -z-20 w-full h-full" aria-hidden="true"></canvas>
+  <canvas data-fundo-shader class="absolute inset-0 -z-20 w-full h-full" aria-hidden="true"></canvas>
   <div class="absolute inset-0 -z-10 bg-gradient-to-b lg:bg-gradient-to-r from-navy-950/85 via-navy-950/55 to-navy-950/10" aria-hidden="true"></div>
   <div class="max-w-6xl mx-auto px-4 pt-10 pb-24 md:pt-16 md:pb-32 grid lg:grid-cols-[1.1fr_.9fr] gap-14 items-center">
     <div>
@@ -372,19 +372,21 @@
 </section>
 
 <!-- ============ CTA ============ -->
-<section class="bg-energia text-navy-950">
+<section class="relative isolate overflow-hidden bg-navy-950 text-white">
+  <canvas data-fundo-shader class="absolute inset-0 -z-20 w-full h-full" aria-hidden="true"></canvas>
+  <div class="absolute inset-0 -z-10 bg-gradient-to-b md:bg-gradient-to-r from-navy-950/85 via-navy-950/55 to-navy-950/25" aria-hidden="true"></div>
   <div class="hazard h-1.5"></div>
-  <div class="max-w-6xl mx-auto px-4 py-14 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+  <div class="max-w-6xl mx-auto px-4 py-20 md:py-24 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
     <div>
-      <h2 class="titulo text-4xl md:text-5xl">Carro não pegou? A gente te ajuda agora.</h2>
-      <p class="mt-2 text-navy-800 text-lg">Mande marca, modelo e ano e receba a indicação da bateria certa.</p>
+      <h2 class="titulo text-5xl md:text-6xl">Carro não pegou?<br>A gente te ajuda agora<span class="text-energia">.</span></h2>
+      <p class="mt-3 text-slate-200 text-lg">Mande marca, modelo e ano e receba a indicação da bateria certa.</p>
     </div>
     <div class="flex flex-col sm:flex-row gap-3 shrink-0">
-      <a href="#" data-zap="Olá! Meu carro não pegou. Meu veículo é: " class="inline-flex items-center justify-center gap-2 bg-navy-950 hover:bg-navy-800 text-white font-bold rounded-full px-6 py-4">
+      <a href="#" data-zap="Olá! Meu carro não pegou. Meu veículo é: " class="pulso inline-flex items-center justify-center gap-2 bg-zap hover:bg-zap-escuro text-white font-bold rounded-full px-6 py-4">
         <svg class="w-5 h-5" fill="currentColor" aria-hidden="true"><use href="#i-zap"/></svg>
         Chamar no WhatsApp
       </a>
-      <a href="#buscador" class="inline-flex items-center justify-center border-2 border-navy-950 font-bold rounded-full px-6 py-4 hover:bg-navy-950 hover:text-white">Usar o buscador</a>
+      <a href="#buscador" class="inline-flex items-center justify-center bg-white/10 backdrop-blur border-2 border-white font-bold rounded-full px-6 py-4 hover:bg-white hover:text-navy-950">Usar o buscador</a>
     </div>
   </div>
 </section>
@@ -1110,15 +1112,15 @@ chatForm.addEventListener('submit', (e) => { e.preventDefault(); enviar(chatInpu
 chatMsgs.addEventListener('click', (e) => { if (e.target.closest('a[href^="#"]')) fecharChat(); });
 
 /* =========================================================
-   FUNDO ANIMADO DO TOPO
-   Releitura em WebGL puro do ShaderGradient "waterPlane"
-   (azul #0008ff, amarelo #fefa00, creme #fffbf0, grão, rotação 235°).
+   FUNDO ANIMADO (topo e faixa final)
+   Releitura em WebGL puro do ShaderGradient "waterPlane":
+   azul #0008ff, amarelo #fefa00, rosado #cdbbbb, brilho 0.9,
+   força 2.7, câmera a 4.3, sem grão, rotação 235°.
    Sem WebGL, fica um degradê em CSS. Pausa fora da tela e respeita
    "reduzir movimento" do sistema.
    ========================================================= */
-(function fundoShader() {
-  const cv = document.getElementById('fundo-shader');
-  const fallback = () => { cv.style.background = 'linear-gradient(125deg,#0008ff 0%,#2a3cff 35%,#fefa00 75%,#fffbf0 100%)'; };
+document.querySelectorAll('[data-fundo-shader]').forEach(function fundoShader(cv) {
+  const fallback = () => { cv.style.background = 'linear-gradient(125deg,#0008ff 0%,#2a3cff 35%,#fefa00 75%,#cdbbbb 100%)'; };
   const gl = cv.getContext('webgl', { antialias: false, premultipliedAlpha: false });
   if (!gl) return fallback();
 
@@ -1147,21 +1149,20 @@ float sn(vec3 v){
 }
 void main(){
   vec2 p=(gl_FragCoord.xy-.5*r)/min(r.x,r.y);
+  p*=4.3/5.5;                                   // câmera mais perto: ondas maiores
   float a=radians(235.);p=mat2(cos(a),-sin(a),sin(a),cos(a))*p;
   p+=vec2(-.5,.1);
   float tt=t*.1;
-  vec2 q=p*1.1;
+  vec2 q=p*1.1;                                 // densidade
   float w1=sn(vec3(q*.55,tt));
   float w2=sn(vec3(q*.9+w1*.8,tt*1.3+4.));
-  float band=sin(q.x*5.5*.42+w2*3.1+tt*1.5);
+  float band=sin(q.x*5.5*.42+w2*2.7+tt*1.5);    // frequência e força
   float v=.5+.5*band;
-  vec3 c1=vec3(0.,.031,1.);vec3 c2=vec3(.996,.98,0.);vec3 c3=vec3(1.,.984,.941);
+  vec3 c1=vec3(0.,.031,1.);vec3 c2=vec3(.996,.98,0.);vec3 c3=vec3(.804,.733,.733);
   vec3 col=mix(c1,c2,smoothstep(.2,.8,v));
-  col=mix(col,c3,smoothstep(.82,1.,v)*.9);
-  float luz=.85+.25*sn(vec3(q*1.6,tt*.7+9.));
-  col*=1.1*luz;
-  float g=fract(sin(dot(gl_FragCoord.xy+fract(t)*91.,vec2(12.9898,78.233)))*43758.5453);
-  col+=(g-.5)*.09;
+  col=mix(col,c3,smoothstep(.8,1.,v)*.9);
+  float luz=.88+.22*sn(vec3(q*1.4,tt*.7+9.)); // luz "city" suave
+  col*=.9*luz*1.12;                             // brilho 0.9
   gl_FragColor=vec4(clamp(col,0.,1.),1.);
 }`;
   const sh = (tipo, src) => { const o = gl.createShader(tipo); gl.shaderSource(o, src); gl.compileShader(o); return gl.getShaderParameter(o, gl.COMPILE_STATUS) ? o : null; };
@@ -1197,7 +1198,7 @@ void main(){
   new IntersectionObserver(([e]) => { visivel = e.isIntersecting; }).observe(cv);
   window.addEventListener('resize', () => { ultimo = 0; if (parado) quadro(performance.now()); });
   requestAnimationFrame(quadro);
-})();
+});
 
 /* =========================================================
    INICIALIZAÇÃO
