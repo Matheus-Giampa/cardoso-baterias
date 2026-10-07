@@ -109,7 +109,7 @@
       </a>
       <nav class="hidden lg:flex items-center gap-7 text-[15px] font-medium text-navy-700">
         <a href="#buscador" class="hover:text-moura">Buscador</a>
-        <a href="#baterias" class="hover:text-moura">Baterias</a>
+        <a href="#linhas" class="hover:text-moura">Baterias</a>
         <a href="#servicos" class="hover:text-moura">Serviços</a>
         <a href="#lojas" class="hover:text-moura">Lojas</a>
         <a href="#duvidas" class="hover:text-moura">Dúvidas</a>
@@ -235,8 +235,20 @@
   </div>
 </section>
 
+<!-- ============ VITRINE (linhas de bateria) ============ -->
+<section id="linhas" class="bg-zinc-50 pb-20">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center max-w-2xl mx-auto">
+      <p class="rotulo text-moura inline-flex items-center gap-2"><span class="mais text-energia"></span> Linhas Moura</p>
+      <h2 class="titulo text-4xl md:text-6xl text-navy-950 mt-2">Bateria para tudo que tem partida</h2>
+      <p class="mt-3 text-navy-500 text-lg">Carro, Start-Stop, moto, caminhão, barco e nobreak. Escolha a linha e fale com a loja.</p>
+    </div>
+    <div id="vitrine" class="mt-10 grid md:grid-cols-2 gap-3"></div>
+  </div>
+</section>
+
 <!-- ============ CATÁLOGO ============ -->
-<section id="baterias" class="bg-zinc-50 pb-24">
+<section id="baterias" class="bg-zinc-50 pt-4 pb-24">
   <div class="max-w-6xl mx-auto px-4">
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-5">
       <div>
@@ -251,14 +263,14 @@
 </section>
 
 <!-- ============ SERVIÇOS ============ -->
-<section id="servicos" class="relative bg-navy-950 text-white grade-escura">
+<section id="servicos" class="relative overflow-hidden bg-navy-950 text-white grade-escura">
   <div class="max-w-6xl mx-auto px-4 py-20 md:py-28">
-    <div class="grid lg:grid-cols-[.9fr_1.1fr] gap-12">
+    <div class="grid lg:grid-cols-[1.1fr_.9fr] gap-14 items-center">
       <div>
-        <p class="rotulo text-energia flex items-center gap-2"><span class="mais text-energia"></span> Serviços</p>
-        <h2 class="titulo text-5xl md:text-6xl mt-3">Tudo para seu carro voltar a rodar</h2>
-        <p class="mt-5 text-slate-300 text-lg">Da escolha da bateria até a instalação. Toque em um serviço para falar direto com a loja.</p>
-        <ol class="mt-10 space-y-6">
+        <p class="rotulo text-energia flex items-center gap-2"><span class="mais text-energia"></span> Como funciona</p>
+        <h2 class="titulo text-5xl md:text-6xl mt-3">Do “não pegou” ao motor ligado</h2>
+        <p class="mt-5 text-slate-300 text-lg max-w-lg">Tudo começa numa conversa no WhatsApp. Sem formulário, sem cadastro.</p>
+        <ol class="mt-10 space-y-7">
           <li class="flex gap-5">
             <span class="titulo text-5xl text-energia w-8">1</span>
             <div><p class="font-semibold text-lg">Você chama</p><p class="text-slate-300">Manda marca, modelo e ano no WhatsApp, ou usa o buscador.</p></div>
@@ -272,8 +284,41 @@
             <div><p class="font-semibold text-lg">Testa e instala</p><p class="text-slate-300">Na loja ou onde o carro estiver. Você só paga depois de instalada.</p></div>
           </li>
         </ol>
+        <a href="#" data-zap="Olá! Vim pelo site e preciso de uma bateria." class="mt-10 inline-flex items-center gap-2 bg-zap hover:bg-zap-escuro text-white font-bold rounded-full px-6 py-3.5">
+          <svg class="w-5 h-5" fill="currentColor" aria-hidden="true"><use href="#i-zap"/></svg> Começar a conversa
+        </a>
       </div>
-      <div id="lista-servicos" class="grid sm:grid-cols-2 gap-px bg-white/10 rounded-2xl overflow-hidden border border-white/10 self-start"></div>
+
+      <!-- celular com exemplo de atendimento -->
+      <figure class="relative mx-auto w-full max-w-[320px]">
+        <div class="absolute -inset-8 rounded-full bg-moura/40 blur-3xl" aria-hidden="true"></div>
+        <div class="relative rounded-[2.6rem] bg-black p-2.5 ring-1 ring-white/15">
+          <div class="rounded-[2.1rem] overflow-hidden bg-[#0f1a2e]">
+            <div class="flex items-center gap-3 px-4 pt-5 pb-3 bg-navy-900 border-b border-white/10">
+              <span class="w-9 h-9 rounded-full bg-white grid place-items-center overflow-hidden"><img src="img/cardoso-baterias-logo.png" alt="" class="w-8"></span>
+              <div class="leading-tight"><p class="font-semibold text-sm">Cardoso Baterias</p><p class="text-[11px] text-zap">online</p></div>
+            </div>
+            <div class="px-3 py-4 space-y-2.5 text-[13px] leading-snug" aria-label="Exemplo de conversa">
+              <p class="ml-auto max-w-[80%] bg-[#1f6f4a] rounded-xl rounded-tr-sm px-3 py-2">Oi! Meu Onix 2018 não pegou hoje cedo</p>
+              <p class="max-w-[85%] bg-white/10 rounded-xl rounded-tl-sm px-3 py-2">Bom dia! Pro Onix 2018 é a <strong>Moura 48Ah</strong>. Me manda a localização?</p>
+              <p class="ml-auto max-w-[70%] bg-[#1f6f4a] rounded-xl rounded-tr-sm p-1.5">
+                <span class="block h-16 rounded-lg bg-[linear-gradient(135deg,#1e3a6b_25%,#16305f_25%,#16305f_50%,#1e3a6b_50%,#1e3a6b_75%,#16305f_75%)] bg-[length:16px_16px] grid place-items-center text-energia">
+                  <svg viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
+                </span>
+                <span class="block px-1.5 pt-1">Localização</span>
+              </p>
+              <p class="max-w-[85%] bg-white/10 rounded-xl rounded-tl-sm px-3 py-2">Técnico a caminho. Ele testa bateria e alternador antes de trocar.</p>
+              <p class="max-w-[85%] bg-white/10 rounded-xl rounded-tl-sm px-3 py-2"><span class="text-energia font-semibold">✓ Instalada.</span> Garantia Moura na nota. Bom dia!</p>
+            </div>
+          </div>
+        </div>
+        <figcaption class="mt-4 text-center text-xs text-slate-400">Exemplo ilustrativo de atendimento</figcaption>
+      </figure>
+    </div>
+
+    <div class="mt-20">
+      <p class="rotulo text-energia flex items-center gap-2"><span class="mais text-energia"></span> Serviços</p>
+      <div id="lista-servicos" class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 rounded-2xl overflow-hidden border border-white/10"></div>
     </div>
   </div>
 </section>
@@ -393,21 +438,51 @@
 </main>
 
 <!-- ============ RODAPÉ ============ -->
-<footer class="bg-white text-sm text-navy-500">
+<footer class="bg-zinc-100 text-[13px] text-navy-500">
   <div class="hazard h-1.5"></div>
-  <div class="max-w-6xl mx-auto px-4 py-12 grid sm:grid-cols-2 lg:grid-cols-[1fr_2fr_1fr] gap-8">
-    <div>
-      <img src="img/cardoso-baterias-logo.png" alt="Cardoso Baterias" class="h-10 w-auto">
-      <p class="mt-4">Revenda autorizada Moura. Baterias automotivas, teste elétrico, entrega e instalação.</p>
+  <div class="max-w-6xl mx-auto px-4 pt-10">
+    <p class="pb-6 border-b border-zinc-300 text-xs leading-relaxed">
+      Indicações de bateria são referências de fábrica e são confirmadas pelo atendente antes da venda. Preços, estoque e garantia sob consulta.
+      A devolução da bateria usada é obrigatória (Lei nº 12.305/2010). Horários podem mudar em feriados.
+    </p>
+    <nav class="py-8 grid grid-cols-2 md:grid-cols-5 gap-8" aria-label="Mapa do site">
+      <div class="col-span-2 md:col-span-1">
+        <img src="img/cardoso-baterias-logo.png" alt="Cardoso Baterias" class="h-9 w-auto">
+        <p class="mt-3">Revenda autorizada Moura em Embu-Guaçu, Cipó e Jardim Ângela.</p>
+      </div>
+      <div>
+        <p class="font-semibold text-navy-950">Baterias</p>
+        <ul class="mt-3 space-y-2" id="rodape-linhas"></ul>
+      </div>
+      <div>
+        <p class="font-semibold text-navy-950">Serviços</p>
+        <ul class="mt-3 space-y-2">
+          <li><a href="#servicos" class="hover:underline">Troca de bateria</a></li>
+          <li><a href="#servicos" class="hover:underline">Teste de bateria</a></li>
+          <li><a href="#servicos" class="hover:underline">Teste do alternador</a></li>
+          <li><a href="#servicos" class="hover:underline">Entrega e instalação</a></li>
+          <li><a href="#buscador" class="hover:underline">Buscador de bateria</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-semibold text-navy-950">Lojas</p>
+        <ul class="mt-3 space-y-3" id="rodape-lojas"></ul>
+      </div>
+      <div>
+        <p class="font-semibold text-navy-950">Atendimento</p>
+        <ul class="mt-3 space-y-2">
+          <li><a href="#" data-zap="Olá! Vim pelo site da Cardoso Baterias." class="hover:underline">WhatsApp</a></li>
+          <li><a data-tel class="hover:underline cursor-pointer">Ligar para a loja</a></li>
+          <li><a href="#duvidas" class="hover:underline">Dúvidas frequentes</a></li>
+          <li><a href="#avaliacoes" class="hover:underline">Avaliações no Google</a></li>
+          <li><button type="button" data-abrir-chat class="hover:underline">Assistente Cardoso</button></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="py-5 border-t border-zinc-300 flex flex-col sm:flex-row justify-between gap-2 text-xs">
+      <p>© <span id="ano"></span> Cardoso Baterias LTDA. Moura é marca registrada de seu respectivo titular.</p>
+      <p>Embu-Guaçu · Cipó · Jardim Ângela — SP</p>
     </div>
-    <div id="rodape-lojas" class="grid sm:grid-cols-3 gap-6"></div>
-    <div>
-      <p class="font-semibold text-navy-950">Meio ambiente</p>
-      <p class="mt-2 leading-relaxed">A devolução da bateria usada é obrigatória (Lei nº 12.305/2010). Faça revisões no seu veículo regularmente.</p>
-    </div>
-  </div>
-  <div class="border-t border-zinc-200">
-    <p class="max-w-6xl mx-auto px-4 py-5 text-xs">© <span id="ano"></span> Cardoso Baterias LTDA. Moura é marca registrada de seu respectivo titular.</p>
   </div>
 </footer>
 
@@ -550,6 +625,7 @@ function aplicarLoja() {
   });
   renderCardsLojas();
   renderCatalogo();
+  renderVitrine();
 }
 
 function escolherLoja(id) {
@@ -609,7 +685,7 @@ function mostrarMapa(k) {
 abasMapa.addEventListener('click', (e) => { const b = e.target.closest('[data-mapa]'); if (b) mostrarMapa(b.dataset.mapa); });
 
 document.getElementById('rodape-lojas').innerHTML = Object.values(LOJAS).map((l) => `
-  <div><p class="font-semibold text-navy-950">${l.nome}</p><p class="mt-2">${l.endereco}<br>${l.cidade}</p><p class="mt-1">${l.whatsTxt}</p></div>`).join('');
+  <li><a href="${mapsRota(l)}" target="_blank" rel="noopener" class="hover:underline text-navy-700">${l.nome}</a><br>${l.endereco}</li>`).join('');
 document.getElementById('ano').textContent = new Date().getFullYear();
 
 document.getElementById('links-avaliacoes').innerHTML = Object.values(LOJAS).map((l) => `
@@ -692,6 +768,74 @@ document.getElementById('chips').addEventListener('click', (e) => {
   filtroAtual = b.dataset.filtro;
   renderChips();
   renderCatalogo();
+});
+
+/* =========================================================
+   VITRINE DE LINHAS (blocos estilo Apple)
+   ========================================================= */
+const LINHAS = [
+  { id: 'carro', titulo: 'Bateria para carro', sub: 'De 40 a 70Ah. Do Mobi ao SUV.', escuro: true, largo: true, filtro: 'Convencional',
+    arte: { w: 300, h: 150, rotulo: 'MOURA', ah: '60Ah', selo: '12V', cor: '#FFC107' } },
+  { id: 'startstop', titulo: 'Start-Stop', sub: 'EFB e AGM para o carro que desliga no sinal.', escuro: false, filtro: 'Start-Stop',
+    arte: { w: 260, h: 140, rotulo: 'MOURA', ah: '70Ah', selo: 'EFB', cor: '#7DD3FC' } },
+  { id: 'pesados', titulo: 'Picapes e caminhões', sub: 'Alta corrente de partida para diesel.', escuro: true, filtro: 'Pesados',
+    arte: { w: 320, h: 150, rotulo: 'MOURA', ah: '150Ah', selo: 'HD', cor: '#E2E8F0', alcas: true } },
+  { id: 'moto', titulo: 'Motos', sub: 'Seladas, sem manutenção. De 5 a 12Ah.', escuro: true, zap: 'Olá! Preciso de bateria de moto. Minha moto é: ',
+    arte: { w: 150, h: 170, rotulo: 'MOTO', ah: '5Ah', selo: '12V', cor: '#FFC107' } },
+  { id: 'nautica', titulo: 'Náutica', sub: 'Para lancha, motor de pesca e jet ski.', escuro: false, zap: 'Olá! Preciso de bateria náutica para: ',
+    arte: { w: 270, h: 150, rotulo: 'BOAT', ah: '105Ah', selo: 'MARINE', cor: '#7DD3FC', alca: true } },
+  { id: 'nobreak', titulo: 'Nobreak e alarme', sub: 'Estacionárias 12V para manter tudo ligado.', escuro: false, largo: true, zap: 'Olá! Preciso de bateria para nobreak/alarme. O modelo é: ',
+    arte: { w: 190, h: 130, rotulo: 'CLEAN', ah: '7Ah', selo: '12V', cor: '#FFC107' } },
+];
+
+function svgLinha(a, escuro) {
+  const W = 360, H = 200, x = (W - a.w) / 2, y = H - a.h - 8;
+  const corpo = '#003399', tampa = '#1E293B';
+  return `<svg viewBox="0 0 ${W} ${H}" class="w-full max-w-md mx-auto" aria-hidden="true">
+    <ellipse cx="${W / 2}" cy="${H - 6}" rx="${a.w / 2}" ry="7" fill="${escuro ? '#000' : '#0B1B3D'}" opacity=".18"/>
+    ${a.alca ? `<path d="M${x + a.w * .3} ${y + 4} q${a.w * .2} -38 ${a.w * .4} 0" fill="none" stroke="#94A3B8" stroke-width="7" stroke-linecap="round"/>` : ''}
+    <rect x="${x + a.w * .14}" y="${y - 6}" width="${a.w * .12}" height="14" rx="3" fill="#EF4444"/>
+    <rect x="${x + a.w * .74}" y="${y - 6}" width="${a.w * .12}" height="14" rx="3" fill="#CBD5E1"/>
+    <rect x="${x}" y="${y + 4}" width="${a.w}" height="${a.h * .2}" rx="8" fill="${tampa}"/>
+    <rect x="${x}" y="${y + a.h * .2}" width="${a.w}" height="${a.h * .8}" rx="10" fill="${corpo}"/>
+    ${a.alcas ? `<rect x="${x - 8}" y="${y + a.h * .4}" width="8" height="${a.h * .3}" rx="3" fill="${tampa}"/><rect x="${x + a.w}" y="${y + a.h * .4}" width="8" height="${a.h * .3}" rx="3" fill="${tampa}"/>` : ''}
+    <rect x="${x}" y="${y + a.h * .52}" width="${a.w}" height="5" fill="${a.cor}"/>
+    <text x="${x + 14}" y="${y + a.h * .44}" font-family="Barlow Condensed" font-weight="800" font-size="${Math.min(22, a.w / 7)}" fill="#fff" letter-spacing="1">${a.rotulo}</text>
+    <text x="${x + 14}" y="${y + a.h * .86}" font-family="Barlow Condensed" font-weight="800" font-size="${Math.min(34, a.w / 5)}" fill="${a.cor}">${a.ah}</text>
+    <rect x="${x + a.w - 14 - a.selo.length * 9 - 10}" y="${y + a.h * .27}" width="${a.selo.length * 9 + 10}" height="18" rx="4" fill="${a.cor}"/>
+    <text x="${x + a.w - 14 - (a.selo.length * 9 + 10) / 2}" y="${y + a.h * .27 + 13}" text-anchor="middle" font-family="Barlow Condensed" font-weight="800" font-size="13" fill="#0B1B3D">${a.selo}</text>
+  </svg>`;
+}
+
+function renderVitrine() {
+  document.getElementById('vitrine').innerHTML = LINHAS.map((l) => {
+    const link = l.escuro ? 'text-energia' : 'text-moura';
+    const ver = l.filtro
+      ? `<button type="button" data-ver-linha="${l.filtro}" class="${link} font-semibold hover:underline">Ver baterias ›</button>`
+      : `<a href="#buscador" class="${link} font-semibold hover:underline">Usar o buscador ›</a>`;
+    const msg = l.zap || `Olá! Vim pelo site e preciso de uma bateria da linha ${l.titulo}. Meu veículo é: `;
+    return `
+    <article class="${l.largo ? 'md:col-span-2' : ''} rounded-3xl overflow-hidden text-center flex flex-col ${l.escuro ? 'bg-navy-950 text-white' : 'bg-white text-navy-950 border border-zinc-200'}">
+      <div class="pt-12 px-6">
+        <h3 class="titulo text-4xl md:text-5xl">${l.titulo}</h3>
+        <p class="mt-2 text-lg ${l.escuro ? 'text-slate-300' : 'text-navy-500'}">${l.sub}</p>
+        <p class="mt-3 flex justify-center gap-6 text-[17px]">
+          ${ver}
+          <a href="${zapLink(msg)}" target="_blank" rel="noopener" class="${link} font-semibold hover:underline">Pedir no WhatsApp ›</a>
+        </p>
+      </div>
+      <div class="mt-auto pt-8 pb-6 px-6">${svgLinha(l.arte, l.escuro)}</div>
+    </article>`;
+  }).join('');
+  document.getElementById('rodape-linhas').innerHTML = LINHAS.map((l) => `<li><a href="#linhas" class="hover:underline">${l.titulo}</a></li>`).join('');
+}
+document.getElementById('vitrine').addEventListener('click', (e) => {
+  const b = e.target.closest('[data-ver-linha]');
+  if (!b) return;
+  filtroAtual = b.dataset.verLinha;
+  renderChips();
+  renderCatalogo();
+  document.getElementById('baterias').scrollIntoView({ behavior: 'smooth' });
 });
 
 /* =========================================================
