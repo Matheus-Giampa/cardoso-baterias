@@ -34,7 +34,7 @@
   html { scroll-behavior: smooth; scroll-padding-top: 96px; }
   body { font-family: Barlow, system-ui, sans-serif; }
 
-  .titulo { font-family: "Barlow Condensed", sans-serif; font-weight: 800; text-transform: uppercase; line-height: .92; letter-spacing: -.005em; }
+  .titulo { font-family: "Barlow Condensed", sans-serif; font-weight: 800; text-transform: uppercase; line-height: .9; letter-spacing: -.012em; }
   .rotulo { font-family: "Barlow Condensed", sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: .18em; font-size: .85rem; }
 
   /* sinais + e − (dos polos da bateria, como no logo) */
@@ -96,7 +96,7 @@
         <span data-status-texto class="truncate">Verificando horário...</span>
       </p>
       <label class="flex items-center gap-1.5 shrink-0">
-        <span class="text-zinc-400 hidden sm:inline">Sua loja:</span>
+        <span class="text-slate-300 hidden sm:inline">Sua loja:</span>
         <select data-sel-loja class="bg-navy-800 border border-navy-700 rounded px-2 py-0.5 text-white text-[13px] focus:outline-none focus:ring-1 focus:ring-energia" aria-label="Escolher loja"></select>
       </label>
     </div>
@@ -115,11 +115,11 @@
         <a href="#duvidas" class="hover:text-moura">Dúvidas</a>
       </nav>
       <div class="flex items-center gap-2">
-        <a data-tel class="hidden sm:inline-flex items-center gap-2 border border-zinc-300 hover:border-navy-950 rounded-lg px-3 py-2 text-sm font-semibold">
+        <a data-tel class="hidden sm:inline-flex items-center gap-2 border border-zinc-300 hover:border-navy-950 rounded-full px-3 py-2 text-sm font-semibold">
           <svg class="w-4 h-4" aria-hidden="true"><use href="#i-tel"/></svg>
           <span data-tel-texto>Ligar</span>
         </a>
-        <a href="#" data-zap="Olá! Vim pelo site da Cardoso Baterias e gostaria de atendimento." class="inline-flex items-center gap-2 bg-zap hover:bg-zap-escuro text-white rounded-lg px-3.5 py-2 text-sm font-bold">
+        <a href="#" data-zap="Olá! Vim pelo site da Cardoso Baterias e gostaria de atendimento." class="inline-flex items-center gap-2 bg-zap hover:bg-zap-escuro text-white rounded-full px-3.5 py-2 text-sm font-bold">
           <svg class="w-4 h-4" fill="currentColor" aria-hidden="true"><use href="#i-zap"/></svg>
           WhatsApp
         </a>
@@ -131,37 +131,40 @@
 <main id="conteudo" class="pt-[104px]">
 
 <!-- ============ HERO ============ -->
-<section id="inicio" class="relative overflow-hidden bg-white grade-fundo">
+<section id="inicio" class="relative isolate overflow-hidden bg-navy-950 text-white">
+  <!-- fundo animado (shader WebGL, baseado no ShaderGradient "waterPlane") -->
+  <canvas id="fundo-shader" class="absolute inset-0 -z-20 w-full h-full" aria-hidden="true"></canvas>
+  <div class="absolute inset-0 -z-10 bg-gradient-to-b lg:bg-gradient-to-r from-navy-950/85 via-navy-950/55 to-navy-950/10" aria-hidden="true"></div>
   <div class="max-w-6xl mx-auto px-4 pt-10 pb-24 md:pt-16 md:pb-32 grid lg:grid-cols-[1.1fr_.9fr] gap-14 items-center">
     <div>
-      <p class="rotulo text-moura flex items-center gap-2"><span class="mais text-energia"></span> Baterias automotivas <span class="menos text-ambar"></span></p>
-      <h1 class="titulo text-[3.4rem] sm:text-7xl lg:text-[6.2rem] mt-4 text-navy-950">
-        Seu carro<br>não pode<br><span class="relative inline-block"><span class="relative z-10">parar</span><span class="text-ambar relative z-10">.</span>
-          <span class="absolute left-0 right-3 bottom-1 h-3 bg-energia/70" aria-hidden="true"></span></span>
+      <p class="rotulo text-energia flex items-center gap-2"><span class="mais text-energia"></span> Baterias automotivas <span class="menos text-white"></span></p>
+      <h1 class="titulo text-[3.7rem] sm:text-8xl lg:text-[7.6rem] mt-4 text-white !leading-[.84] tracking-[-0.02em]">
+        Seu carro<br>não pode<br><span class="relative inline-block"><span class="relative z-10">parar</span><span class="text-energia relative z-10">.</span>
+          <span class="absolute left-0 right-3 bottom-1 h-3 bg-moura" aria-hidden="true"></span></span>
       </h1>
-      <p class="mt-7 text-lg sm:text-xl text-navy-700 max-w-lg">
-        Diga o carro e a gente indica a bateria certa. Testamos bateria e alternador, <strong class="text-navy-950">entregamos e instalamos onde você estiver.</strong>
+      <p class="mt-7 text-lg sm:text-xl text-slate-200 max-w-lg">
+        Diga o carro e a gente indica a bateria certa. Testamos bateria e alternador, <strong class="text-white">entregamos e instalamos onde você estiver.</strong>
       </p>
       <div class="mt-8 flex flex-col sm:flex-row gap-3">
-        <a href="#buscador" class="inline-flex items-center justify-center gap-2 bg-navy-950 hover:bg-navy-800 text-white font-bold text-lg rounded-lg px-6 py-4">
+        <a href="#buscador" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-energia text-navy-950 font-bold text-lg rounded-full px-6 py-4">
           Encontrar minha bateria
           <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
         </a>
-        <a href="#" data-zap="Olá! Meu carro não está pegando e preciso de uma bateria. Podem me ajudar?" class="pulso inline-flex items-center justify-center gap-2 bg-zap hover:bg-zap-escuro text-white font-bold text-lg rounded-lg px-6 py-4">
+        <a href="#" data-zap="Olá! Meu carro não está pegando e preciso de uma bateria. Podem me ajudar?" class="pulso inline-flex items-center justify-center gap-2 bg-zap hover:bg-zap-escuro text-white font-bold text-lg rounded-full px-6 py-4">
           <svg class="w-6 h-6" fill="currentColor" aria-hidden="true"><use href="#i-zap"/></svg>
           Carro não pegou? Chame agora
         </a>
       </div>
-      <ul class="mt-9 grid grid-cols-3 max-w-lg border-t border-zinc-200 pt-6">
-        <li><p class="titulo text-3xl sm:text-4xl text-navy-950">3</p><p class="text-sm text-navy-500 mt-1">lojas na região</p></li>
-        <li><p class="titulo text-3xl sm:text-4xl text-navy-950">9h–17h</p><p class="text-sm text-navy-500 mt-1">entregas em dia útil</p></li>
-        <li><p class="titulo text-3xl sm:text-4xl text-navy-950">Moura</p><p class="text-sm text-navy-500 mt-1">revenda autorizada</p></li>
+      <ul class="mt-9 grid grid-cols-3 max-w-lg border-t border-white/20 pt-6">
+        <li><p class="titulo text-3xl sm:text-4xl text-white">3</p><p class="text-sm text-slate-300 mt-1">lojas na região</p></li>
+        <li><p class="titulo text-3xl sm:text-4xl text-white">9h–17h</p><p class="text-sm text-slate-300 mt-1">entregas em dia útil</p></li>
+        <li><p class="titulo text-3xl sm:text-4xl text-white">Moura</p><p class="text-sm text-slate-300 mt-1">revenda autorizada</p></li>
       </ul>
     </div>
 
     <!-- ilustração -->
     <div class="relative max-w-md w-full mx-auto">
-      <div class="absolute -inset-3 sm:-inset-5 rounded-[2rem] bg-energia rotate-2" aria-hidden="true"></div>
+      <div class="absolute -inset-3 sm:-inset-4 rounded-[2rem] bg-white/10 backdrop-blur-md border border-white/20 rotate-2" aria-hidden="true"></div>
       <div class="relative rounded-[1.6rem] bg-navy-950 grade-escura p-7 text-white overflow-hidden">
         <div class="flex items-center justify-between">
           <p class="rotulo text-energia">Diagnóstico no local</p>
@@ -195,7 +198,7 @@
 <!-- ============ BUSCADOR ============ -->
 <section id="buscador" class="relative bg-zinc-50 pb-20">
   <div class="max-w-6xl mx-auto px-4">
-    <div class="-mt-14 md:-mt-20 relative bg-white rounded-2xl border border-zinc-200 shadow-[0_20px_50px_-20px_rgba(11,27,61,.25)] overflow-hidden">
+    <div class="-mt-14 md:-mt-20 relative bg-white rounded-2xl border border-zinc-200 overflow-hidden">
       <div class="p-6 md:p-9">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
@@ -222,7 +225,7 @@
             <span class="block text-xs font-bold uppercase tracking-wider text-navy-500 mb-1.5">4. Motor</span>
             <select id="f-motor" disabled class="w-full border border-zinc-300 rounded-lg px-3 py-3.5 bg-white focus:outline-none focus:ring-2 focus:ring-energia"></select>
           </label>
-          <button id="btn-busca" type="submit" disabled class="col-span-2 lg:col-span-1 self-end bg-navy-950 hover:bg-navy-800 disabled:bg-zinc-300 disabled:cursor-not-allowed text-white font-bold rounded-lg px-6 py-3.5">Encontrar bateria</button>
+          <button id="btn-busca" type="submit" disabled class="col-span-2 lg:col-span-1 self-end bg-navy-950 hover:bg-navy-800 disabled:bg-zinc-300 disabled:cursor-not-allowed text-white font-bold rounded-full px-6 py-3.5">Encontrar bateria</button>
         </form>
         <p class="mt-4 text-sm text-navy-500">Não achou seu carro, ou é moto, caminhão, barco ou nobreak?
           <a href="#" data-zap="Olá! Não encontrei meu veículo no buscador do site. Meu veículo é: " class="font-semibold text-moura hover:underline">Fale com a gente pelo WhatsApp</a>.</p>
@@ -254,19 +257,19 @@
       <div>
         <p class="rotulo text-energia flex items-center gap-2"><span class="mais text-energia"></span> Serviços</p>
         <h2 class="titulo text-5xl md:text-6xl mt-3">Tudo para seu carro voltar a rodar</h2>
-        <p class="mt-5 text-zinc-400 text-lg">Da escolha da bateria até a instalação. Toque em um serviço para falar direto com a loja.</p>
+        <p class="mt-5 text-slate-300 text-lg">Da escolha da bateria até a instalação. Toque em um serviço para falar direto com a loja.</p>
         <ol class="mt-10 space-y-6">
           <li class="flex gap-5">
             <span class="titulo text-5xl text-energia w-8">1</span>
-            <div><p class="font-semibold text-lg">Você chama</p><p class="text-zinc-400">Manda marca, modelo e ano no WhatsApp, ou usa o buscador.</p></div>
+            <div><p class="font-semibold text-lg">Você chama</p><p class="text-slate-300">Manda marca, modelo e ano no WhatsApp, ou usa o buscador.</p></div>
           </li>
           <li class="flex gap-5">
             <span class="titulo text-5xl text-energia w-8">2</span>
-            <div><p class="font-semibold text-lg">A gente confirma</p><p class="text-zinc-400">Compatibilidade, preço e garantia confirmados por um atendente.</p></div>
+            <div><p class="font-semibold text-lg">A gente confirma</p><p class="text-slate-300">Compatibilidade, preço e garantia confirmados por um atendente.</p></div>
           </li>
           <li class="flex gap-5">
             <span class="titulo text-5xl text-energia w-8">3</span>
-            <div><p class="font-semibold text-lg">Testa e instala</p><p class="text-zinc-400">Na loja ou onde o carro estiver. Você só paga depois de instalada.</p></div>
+            <div><p class="font-semibold text-lg">Testa e instala</p><p class="text-slate-300">Na loja ou onde o carro estiver. Você só paga depois de instalada.</p></div>
           </li>
         </ol>
       </div>
@@ -284,8 +287,8 @@
       <p class="mt-6 text-lg text-navy-700 leading-relaxed">A Cardoso Baterias é especializada em baterias automotivas e revenda autorizada Moura. Nosso trabalho é indicar a bateria certa para o seu veículo, sem empurrar o que você não precisa, e resolver rápido.</p>
       <p class="mt-4 text-lg text-navy-700 leading-relaxed">Hoje são <strong class="text-navy-950">3 lojas</strong> para atender você: Embu-Guaçu, Cipó e Jardim Ângela.</p>
       <div class="mt-8 flex flex-wrap gap-3">
-        <a href="#lojas" class="inline-flex items-center gap-2 bg-navy-950 hover:bg-navy-800 text-white font-semibold rounded-lg px-5 py-3">Ver as 3 lojas</a>
-        <a href="#" data-zap="Olá! Vim pelo site da Cardoso Baterias e gostaria de falar com um especialista." class="inline-flex items-center gap-2 border border-zinc-300 hover:border-navy-950 font-semibold rounded-lg px-5 py-3">Falar com um especialista</a>
+        <a href="#lojas" class="inline-flex items-center gap-2 bg-navy-950 hover:bg-navy-800 text-white font-semibold rounded-full px-5 py-3">Ver as 3 lojas</a>
+        <a href="#" data-zap="Olá! Vim pelo site da Cardoso Baterias e gostaria de falar com um especialista." class="inline-flex items-center gap-2 border border-zinc-300 hover:border-navy-950 font-semibold rounded-full px-5 py-3">Falar com um especialista</a>
       </div>
     </div>
     <div class="grid sm:grid-cols-2 gap-4">
@@ -312,7 +315,7 @@
       <article class="sm:col-span-2 rounded-2xl bg-navy-950 text-white p-6 flex flex-col sm:flex-row sm:items-center gap-5">
         <div class="flex-1">
           <h3 class="titulo text-2xl">Transparência antes de tudo</h3>
-          <p class="mt-1.5 text-zinc-400">Preço, estoque e garantia são sempre confirmados por um atendente antes da compra. Sem surpresa na hora de pagar.</p>
+          <p class="mt-1.5 text-slate-300">Preço, estoque e garantia são sempre confirmados por um atendente antes da compra. Sem surpresa na hora de pagar.</p>
         </div>
         <span class="titulo text-6xl text-energia shrink-0" aria-hidden="true"><span class="mais"></span><span class="menos text-ambar ml-3"></span></span>
       </article>
@@ -344,8 +347,8 @@
       <h2 class="titulo text-5xl text-navy-950 mt-2">Perguntas frequentes</h2>
       <div class="mt-8 rounded-2xl bg-navy-950 text-white p-6">
         <p class="titulo text-2xl">Ainda com dúvida?</p>
-        <p class="text-zinc-400 mt-1">Pergunte ao assistente: ele responde na hora e passa para um atendente quando precisar.</p>
-        <button type="button" data-abrir-chat class="mt-5 inline-flex items-center gap-2 bg-energia hover:bg-energia text-navy-950 font-bold rounded-lg px-5 py-3">Falar com o Assistente Cardoso</button>
+        <p class="text-slate-300 mt-1">Pergunte ao assistente: ele responde na hora e passa para um atendente quando precisar.</p>
+        <button type="button" data-abrir-chat class="mt-5 inline-flex items-center gap-2 bg-energia hover:bg-energia text-navy-950 font-bold rounded-full px-5 py-3">Falar com o Assistente Cardoso</button>
       </div>
     </div>
     <div id="faq" class="divide-y divide-zinc-200 border-y border-zinc-200"></div>
@@ -357,7 +360,7 @@
   <div class="max-w-6xl mx-auto px-4 py-20 md:py-28">
     <p class="rotulo text-energia flex items-center gap-2"><span class="mais text-energia"></span> Nossas lojas</p>
     <h2 class="titulo text-5xl md:text-6xl mt-3">3 lojas para te atender</h2>
-    <p class="mt-3 text-zinc-400">Escolha a unidade mais perto de você. Horários podem mudar em feriados. Na dúvida, chame no WhatsApp.</p>
+    <p class="mt-3 text-slate-300">Escolha a unidade mais perto de você. Horários podem mudar em feriados. Na dúvida, chame no WhatsApp.</p>
 
     <div id="cards-lojas" class="mt-10 grid md:grid-cols-3 gap-4"></div>
 
@@ -377,11 +380,11 @@
       <p class="mt-2 text-navy-800 text-lg">Mande marca, modelo e ano e receba a indicação da bateria certa.</p>
     </div>
     <div class="flex flex-col sm:flex-row gap-3 shrink-0">
-      <a href="#" data-zap="Olá! Meu carro não pegou. Meu veículo é: " class="inline-flex items-center justify-center gap-2 bg-navy-950 hover:bg-navy-800 text-white font-bold rounded-lg px-6 py-4">
+      <a href="#" data-zap="Olá! Meu carro não pegou. Meu veículo é: " class="inline-flex items-center justify-center gap-2 bg-navy-950 hover:bg-navy-800 text-white font-bold rounded-full px-6 py-4">
         <svg class="w-5 h-5" fill="currentColor" aria-hidden="true"><use href="#i-zap"/></svg>
         Chamar no WhatsApp
       </a>
-      <a href="#buscador" class="inline-flex items-center justify-center border-2 border-navy-950 font-bold rounded-lg px-6 py-4 hover:bg-navy-950 hover:text-white">Usar o buscador</a>
+      <a href="#buscador" class="inline-flex items-center justify-center border-2 border-navy-950 font-bold rounded-full px-6 py-4 hover:bg-navy-950 hover:text-white">Usar o buscador</a>
     </div>
   </div>
 </section>
@@ -407,7 +410,7 @@
 </footer>
 
 <!-- ============ BARRA MOBILE ============ -->
-<div class="md:hidden fixed bottom-0 inset-x-0 z-40 grid grid-cols-2 shadow-[0_-4px_16px_rgba(0,0,0,.15)]">
+<div class="md:hidden fixed bottom-0 inset-x-0 z-40 grid grid-cols-2 border-t border-white/20">
   <a href="#" data-zap="Olá! Vim pelo site e preciso de uma bateria." class="flex items-center justify-center gap-2 bg-zap active:bg-zap-escuro text-white font-bold h-[68px]">
     <svg class="w-5 h-5" fill="currentColor" aria-hidden="true"><use href="#i-zap"/></svg> WhatsApp
   </a>
@@ -418,7 +421,7 @@
 
 <!-- ============ CHATBOT ============ -->
 <button id="chat-botao" type="button" aria-label="Abrir o Assistente Cardoso" aria-expanded="false" aria-controls="chat-janela"
-  class="fixed z-50 right-4 bottom-[84px] md:bottom-6 h-14 px-[13px] sm:pl-4 sm:pr-5 rounded-full bg-navy-950 text-white shadow-xl border-2 border-energia flex items-center gap-2.5 hover:scale-[1.03] transition">
+  class="fixed z-50 right-4 bottom-[84px] md:bottom-6 h-14 px-[13px] sm:pl-4 sm:pr-5 rounded-full bg-navy-950 text-white border-2 border-energia flex items-center gap-2.5 hover:scale-[1.03] transition">
   <span class="grid place-items-center w-7 h-7">
     <svg id="chat-icone-abrir" viewBox="0 0 24 24" class="w-7 h-7 text-energia" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 4v4M9 13h.01M15 13h.01M9 17h6"/></svg>
     <svg id="chat-icone-fechar" viewBox="0 0 24 24" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
@@ -427,7 +430,7 @@
   <span id="chat-badge" class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-ambar text-white text-xs font-bold grid place-items-center">1</span>
 </button>
 
-<div id="chat-janela" role="dialog" aria-label="Assistente Cardoso" class="fechado fixed z-50 right-2 left-2 sm:left-auto sm:right-4 bottom-[150px] md:bottom-24 sm:w-[390px] h-[min(580px,calc(100vh-200px))] bg-white rounded-2xl shadow-2xl border border-zinc-200 flex flex-col overflow-hidden">
+<div id="chat-janela" role="dialog" aria-label="Assistente Cardoso" class="fechado fixed z-50 right-2 left-2 sm:left-auto sm:right-4 bottom-[150px] md:bottom-24 sm:w-[390px] h-[min(580px,calc(100vh-200px))] bg-white rounded-2xl shadow-[0_8px_30px_rgba(11,27,61,.18)] border border-zinc-200 flex flex-col overflow-hidden">
   <div class="bg-navy-950 text-white px-4 py-3 flex items-center gap-3">
     <span class="relative w-10 h-10 rounded-full bg-navy-800 grid place-items-center border-2 border-energia shrink-0">
       <svg viewBox="0 0 24 24" class="w-5 h-5 text-energia" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 4v4M9 13h.01M15 13h.01M9 17h6"/></svg>
@@ -435,7 +438,7 @@
     </span>
     <div class="leading-tight flex-1">
       <p class="titulo text-xl tracking-wide">Assistente Cardoso</p>
-      <p class="text-xs text-zinc-400">Online agora · técnico virtual</p>
+      <p class="text-xs text-slate-300">Online agora · técnico virtual</p>
     </div>
     <button type="button" id="chat-fechar" class="p-1.5 rounded hover:bg-white/10" aria-label="Fechar chat">
       <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
@@ -449,7 +452,7 @@
     <label for="chat-input" class="sr-only">Sua mensagem</label>
     <input id="chat-input" type="text" autocomplete="off" maxlength="300" placeholder="Ex: Onix 2018 não pega"
       class="flex-1 min-w-0 border border-zinc-300 rounded-lg px-3 py-2.5 text-[15px] focus:outline-none focus:ring-2 focus:ring-energia">
-    <button type="submit" class="shrink-0 w-11 h-11 rounded-lg bg-navy-950 text-white grid place-items-center hover:bg-navy-800" aria-label="Enviar">
+    <button type="submit" class="shrink-0 w-11 h-11 rounded-full bg-navy-950 text-white grid place-items-center hover:bg-navy-800" aria-label="Enviar">
       <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg>
     </button>
   </form>
@@ -574,17 +577,17 @@ function renderCardsLojas() {
       <p class="mt-3 flex items-center gap-2 text-sm font-semibold">
         <span class="w-2 h-2 rounded-full ${st.aberta ? 'bg-zap' : 'bg-ambar'}"></span>${st.txt}
       </p>
-      <p class="mt-4 ${ativa ? 'text-navy-700' : 'text-zinc-300'}">${l.endereco}<br>${l.cidade}</p>
-      <table class="mt-4 w-full text-sm ${ativa ? 'text-navy-700' : 'text-zinc-300'}">
+      <p class="mt-4 ${ativa ? 'text-navy-700' : 'text-slate-300'}">${l.endereco}<br>${l.cidade}</p>
+      <table class="mt-4 w-full text-sm ${ativa ? 'text-navy-700' : 'text-slate-300'}">
         ${l.horarios.map(([d, hr]) => `<tr><td class="py-0.5">${d}</td><td class="text-right font-semibold ${hr === 'Fechado' ? 'opacity-50' : ''}">${hr}</td></tr>`).join('')}
         ${l.entrega ? `<tr><td class="pt-2">Entregas</td><td class="text-right font-semibold pt-2 ${ativa ? 'text-moura' : 'text-energia'}">${l.entrega}</td></tr>` : ''}
       </table>
       <p class="mt-4 text-sm">WhatsApp: <strong>${l.whatsTxt}</strong>${l.central ? ' <span class="opacity-60">(central)</span>' : ''}</p>
       <div class="mt-auto pt-6 grid grid-cols-2 gap-2">
-        <a href="${zapLink('Olá! Vim pelo site e gostaria de atendimento na loja ' + l.nome + '.', k)}" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-1.5 bg-zap hover:bg-zap-escuro text-white font-bold rounded-lg px-3 py-2.5 text-sm">
+        <a href="${zapLink('Olá! Vim pelo site e gostaria de atendimento na loja ' + l.nome + '.', k)}" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-1.5 bg-zap hover:bg-zap-escuro text-white font-bold rounded-full px-3 py-2.5 text-sm">
           <svg class="w-4 h-4" fill="currentColor" aria-hidden="true"><use href="#i-zap"/></svg> WhatsApp
         </a>
-        <a href="${mapsRota(l)}" target="_blank" rel="noopener" class="inline-flex items-center justify-center rounded-lg px-3 py-2.5 text-sm font-semibold ${ativa ? 'bg-navy-950 text-white hover:bg-navy-800' : 'bg-white/10 hover:bg-white/15'}">Como chegar</a>
+        <a href="${mapsRota(l)}" target="_blank" rel="noopener" class="inline-flex items-center justify-center rounded-full px-3 py-2.5 text-sm font-semibold ${ativa ? 'bg-navy-950 text-white hover:bg-navy-800' : 'bg-white/10 hover:bg-white/15'}">Como chegar</a>
         ${ativa ? '' : `<button type="button" data-escolher="${k}" class="col-span-2 text-sm font-semibold underline underline-offset-4 decoration-white/30 hover:decoration-white py-1">Usar esta loja no site</button>`}
       </div>
     </article>`;
@@ -599,7 +602,7 @@ const abasMapa = document.getElementById('abas-mapa');
 function mostrarMapa(k) {
   document.getElementById('mapa').src = `https://maps.google.com/maps?q=${encodeURIComponent(LOJAS[k].maps)}&z=16&output=embed`;
   abasMapa.innerHTML = Object.entries(LOJAS).map(([kk, ll]) => `
-    <button type="button" role="tab" aria-selected="${kk === k}" data-mapa="${kk}" class="shrink-0 px-5 py-3.5 text-sm font-semibold border-b-2 ${kk === k ? 'border-energia text-white' : 'border-transparent text-zinc-400 hover:text-white'}">${ll.nome}</button>`).join('');
+    <button type="button" role="tab" aria-selected="${kk === k}" data-mapa="${kk}" class="shrink-0 px-5 py-3.5 text-sm font-semibold border-b-2 ${kk === k ? 'border-energia text-white' : 'border-transparent text-slate-300 hover:text-white'}">${ll.nome}</button>`).join('');
 }
 abasMapa.addEventListener('click', (e) => { const b = e.target.closest('[data-mapa]'); if (b) mostrarMapa(b.dataset.mapa); });
 
@@ -676,7 +679,7 @@ function renderCatalogo() {
       <ul class="mt-3 text-sm text-navy-500 space-y-1 flex-1">${b.apl.map((a) => `<li class="flex gap-2"><span class="text-energia">•</span>${a}</li>`).join('')}</ul>
       <p class="mt-4 text-sm font-semibold text-navy-950">Preço sob consulta</p>
       <a href="${zapLink(`Olá! Vim pelo site e tenho interesse na bateria ${b.nome}${b.cod ? ' (' + b.cod + ')' : ''}. Tem disponível?`)}" target="_blank" rel="noopener"
-        class="mt-3 inline-flex items-center justify-center gap-2 bg-navy-950 group-hover:bg-zap text-white font-bold rounded-lg px-4 py-3 transition">
+        class="mt-3 inline-flex items-center justify-center gap-2 bg-navy-950 group-hover:bg-zap text-white font-bold rounded-full px-4 py-3 transition">
         <svg class="w-4 h-4" fill="currentColor" aria-hidden="true"><use href="#i-zap"/></svg> Consultar no WhatsApp
       </a>
     </article>`).join('');
@@ -829,7 +832,7 @@ document.getElementById('form-busca').addEventListener('submit', (e) => {
         <p class="mt-2 text-sm text-navy-500">O atendente confirma a compatibilidade pela placa antes da venda.</p>
       </div>
       <div class="flex flex-col gap-2 md:w-60">
-        <a href="${zapLink(msg)}" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 bg-zap hover:bg-zap-escuro text-white font-bold rounded-lg px-5 py-3.5">
+        <a href="${zapLink(msg)}" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 bg-zap hover:bg-zap-escuro text-white font-bold rounded-full px-5 py-3.5">
           <svg class="w-5 h-5" fill="currentColor" aria-hidden="true"><use href="#i-zap"/></svg> Pedir pelo WhatsApp
         </a>
         <p class="text-xs text-navy-500 text-center">Atendimento: loja ${LOJAS[lojaAtual].nome}</p>
@@ -853,7 +856,7 @@ document.getElementById('lista-servicos').innerHTML = SERVICOS.map(([t, d], i) =
   <a href="#" data-zap="Olá! Vim pelo site e gostaria de informações sobre: ${t}." class="group bg-navy-950 hover:bg-navy-800 p-6 transition flex flex-col">
     <span class="titulo text-sm text-energia">0${i + 1}</span>
     <h3 class="titulo text-2xl mt-2">${t}</h3>
-    <p class="mt-2 text-zinc-400 text-[15px] flex-1">${d}</p>
+    <p class="mt-2 text-slate-300 text-[15px] flex-1">${d}</p>
     <span class="mt-4 text-sm font-semibold text-energia flex items-center gap-1.5">Falar com a loja
       <svg viewBox="0 0 24 24" class="w-4 h-4 transition group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
   </a>`).join('');
@@ -934,8 +937,8 @@ function addMsg(texto, de, zapTexto) {
   wrap.innerHTML = de === 'user'
     ? `<div class="max-w-[85%] bg-navy-950 text-white rounded-2xl rounded-br-sm px-3.5 py-2.5 text-[15px]">${escapar(texto)}</div>`
     : `<div class="max-w-[88%]">
-        <div class="bg-white border border-zinc-200 text-navy-800 rounded-2xl rounded-bl-sm px-3.5 py-2.5 text-[15px] leading-relaxed shadow-sm">${texto}</div>
-        ${zapTexto ? `<a href="${zapLink(zapTexto)}" target="_blank" rel="noopener" class="mt-2 inline-flex items-center gap-2 bg-zap hover:bg-zap-escuro text-white text-sm font-bold rounded-lg px-3.5 py-2.5">
+        <div class="bg-white border border-zinc-200 text-navy-800 rounded-2xl rounded-bl-sm px-3.5 py-2.5 text-[15px] leading-relaxed">${texto}</div>
+        ${zapTexto ? `<a href="${zapLink(zapTexto)}" target="_blank" rel="noopener" class="mt-2 inline-flex items-center gap-2 bg-zap hover:bg-zap-escuro text-white text-sm font-bold rounded-full px-3.5 py-2.5">
           <svg class="w-4 h-4" fill="currentColor" aria-hidden="true"><use href="#i-zap"/></svg> Pedir entrega no WhatsApp</a>` : ''}
       </div>`;
   chatMsgs.appendChild(wrap);
@@ -1105,6 +1108,96 @@ document.querySelectorAll('[data-abrir-chat]').forEach((b) => b.addEventListener
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') fecharChat(); });
 chatForm.addEventListener('submit', (e) => { e.preventDefault(); enviar(chatInput.value); });
 chatMsgs.addEventListener('click', (e) => { if (e.target.closest('a[href^="#"]')) fecharChat(); });
+
+/* =========================================================
+   FUNDO ANIMADO DO TOPO
+   Releitura em WebGL puro do ShaderGradient "waterPlane"
+   (azul #0008ff, amarelo #fefa00, creme #fffbf0, grão, rotação 235°).
+   Sem WebGL, fica um degradê em CSS. Pausa fora da tela e respeita
+   "reduzir movimento" do sistema.
+   ========================================================= */
+(function fundoShader() {
+  const cv = document.getElementById('fundo-shader');
+  const fallback = () => { cv.style.background = 'linear-gradient(125deg,#0008ff 0%,#2a3cff 35%,#fefa00 75%,#fffbf0 100%)'; };
+  const gl = cv.getContext('webgl', { antialias: false, premultipliedAlpha: false });
+  if (!gl) return fallback();
+
+  const vs = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+  const fs = `
+precision highp float;
+uniform vec2 r; uniform float t;
+vec3 mod289(vec3 x){return x-floor(x*(1./289.))*289.;}
+vec4 mod289(vec4 x){return x-floor(x*(1./289.))*289.;}
+vec4 perm(vec4 x){return mod289(((x*34.)+1.)*x);}
+vec4 tis(vec4 r){return 1.79284291400159-.85373472095314*r;}
+float sn(vec3 v){
+  const vec2 C=vec2(1./6.,1./3.);const vec4 D=vec4(0.,.5,1.,2.);
+  vec3 i=floor(v+dot(v,C.yyy));vec3 x0=v-i+dot(i,C.xxx);
+  vec3 g=step(x0.yzx,x0.xyz);vec3 l=1.-g;vec3 i1=min(g.xyz,l.zxy);vec3 i2=max(g.xyz,l.zxy);
+  vec3 x1=x0-i1+C.xxx;vec3 x2=x0-i2+C.yyy;vec3 x3=x0-D.yyy;i=mod289(i);
+  vec4 p=perm(perm(perm(i.z+vec4(0.,i1.z,i2.z,1.))+i.y+vec4(0.,i1.y,i2.y,1.))+i.x+vec4(0.,i1.x,i2.x,1.));
+  vec3 ns=.142857142857*D.wyz-D.xzx;vec4 j=p-49.*floor(p*ns.z*ns.z);
+  vec4 x_=floor(j*ns.z);vec4 y_=floor(j-7.*x_);vec4 x=x_*ns.x+ns.yyyy;vec4 y=y_*ns.x+ns.yyyy;vec4 h=1.-abs(x)-abs(y);
+  vec4 b0=vec4(x.xy,y.xy);vec4 b1=vec4(x.zw,y.zw);vec4 s0=floor(b0)*2.+1.;vec4 s1=floor(b1)*2.+1.;vec4 sh=-step(h,vec4(0.));
+  vec4 a0=b0.xzyw+s0.xzyw*sh.xxyy;vec4 a1=b1.xzyw+s1.xzyw*sh.zzww;
+  vec3 p0=vec3(a0.xy,h.x);vec3 p1=vec3(a0.zw,h.y);vec3 p2=vec3(a1.xy,h.z);vec3 p3=vec3(a1.zw,h.w);
+  vec4 nr=tis(vec4(dot(p0,p0),dot(p1,p1),dot(p2,p2),dot(p3,p3)));p0*=nr.x;p1*=nr.y;p2*=nr.z;p3*=nr.w;
+  vec4 m=max(.6-vec4(dot(x0,x0),dot(x1,x1),dot(x2,x2),dot(x3,x3)),0.);m=m*m;
+  return 42.*dot(m*m,vec4(dot(p0,x0),dot(p1,x1),dot(p2,x2),dot(p3,x3)));
+}
+void main(){
+  vec2 p=(gl_FragCoord.xy-.5*r)/min(r.x,r.y);
+  float a=radians(235.);p=mat2(cos(a),-sin(a),sin(a),cos(a))*p;
+  p+=vec2(-.5,.1);
+  float tt=t*.1;
+  vec2 q=p*1.1;
+  float w1=sn(vec3(q*.55,tt));
+  float w2=sn(vec3(q*.9+w1*.8,tt*1.3+4.));
+  float band=sin(q.x*5.5*.42+w2*3.1+tt*1.5);
+  float v=.5+.5*band;
+  vec3 c1=vec3(0.,.031,1.);vec3 c2=vec3(.996,.98,0.);vec3 c3=vec3(1.,.984,.941);
+  vec3 col=mix(c1,c2,smoothstep(.2,.8,v));
+  col=mix(col,c3,smoothstep(.82,1.,v)*.9);
+  float luz=.85+.25*sn(vec3(q*1.6,tt*.7+9.));
+  col*=1.1*luz;
+  float g=fract(sin(dot(gl_FragCoord.xy+fract(t)*91.,vec2(12.9898,78.233)))*43758.5453);
+  col+=(g-.5)*.09;
+  gl_FragColor=vec4(clamp(col,0.,1.),1.);
+}`;
+  const sh = (tipo, src) => { const o = gl.createShader(tipo); gl.shaderSource(o, src); gl.compileShader(o); return gl.getShaderParameter(o, gl.COMPILE_STATUS) ? o : null; };
+  const v = sh(gl.VERTEX_SHADER, vs), f = sh(gl.FRAGMENT_SHADER, fs);
+  if (!v || !f) return fallback();
+  const pr = gl.createProgram(); gl.attachShader(pr, v); gl.attachShader(pr, f); gl.linkProgram(pr);
+  if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) return fallback();
+  gl.useProgram(pr);
+  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+  const loc = gl.getAttribLocation(pr, 'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+  const uR = gl.getUniformLocation(pr, 'r'), uT = gl.getUniformLocation(pr, 't');
+
+  // meia resolução: o grão e o desfoque natural escondem, e pesa bem menos no celular
+  const escala = 0.5;
+  function medir() {
+    const w = Math.max(1, Math.round(cv.clientWidth * escala)), h = Math.max(1, Math.round(cv.clientHeight * escala));
+    if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; gl.viewport(0, 0, w, h); }
+  }
+  const parado = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let visivel = true, ultimo = 0;
+  const t0 = performance.now() - 2000;
+  function quadro(agora) {
+    if ((visivel || !ultimo) && agora - ultimo > 33) { // ~30 fps
+      ultimo = agora;
+      medir();
+      gl.uniform2f(uR, cv.width, cv.height);
+      gl.uniform1f(uT, (agora - t0) / 1000);
+      gl.drawArrays(gl.TRIANGLES, 0, 3);
+    }
+    if (!parado) requestAnimationFrame(quadro);
+  }
+  new IntersectionObserver(([e]) => { visivel = e.isIntersecting; }).observe(cv);
+  window.addEventListener('resize', () => { ultimo = 0; if (parado) quadro(performance.now()); });
+  requestAnimationFrame(quadro);
+})();
 
 /* =========================================================
    INICIALIZAÇÃO
