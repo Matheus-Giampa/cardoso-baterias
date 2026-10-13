@@ -166,6 +166,11 @@
       </a>
       <a href="#buscador" class="inline-flex items-center gap-2 rounded-full px-6 py-4 text-lg font-semibold text-white border border-white/15 hover:bg-white/5">Encontrar minha bateria</a>
     </div>
+    <a href="#avaliacoes" class="mt-7 inline-flex items-center gap-2.5 text-[15px] text-slate-300 hover:text-white">
+      <span class="w-6 h-6 rounded-full bg-white grid place-items-center"><svg class="w-3.5 h-3.5" aria-hidden="true"><use href="#i-google"/></svg></span>
+      <span class="text-energia tracking-wider" aria-hidden="true">★★★★★</span>
+      <span><strong class="text-white" data-nota-geral>4,9</strong> no Google · <span data-total-geral>327</span> avaliações</span>
+    </a>
   </div>
 
   <!-- palco: celular no centro + cards flutuantes -->
@@ -451,15 +456,23 @@
 </section>
 
 <!-- ============ AVALIAÇÕES ============ -->
+<!-- Notas copiadas do Google Maps em 13/10/2026. Atualizar em LOJAS[x].google quando mudar. -->
 <!-- Depoimentos: preencher a lista DEPOIMENTOS no JS somente com avaliações reais do Google. -->
 <section id="avaliacoes" class="relative pt-16 pb-24">
   <div class="max-w-6xl mx-auto px-4">
-    <div class="vidro rounded-[2rem] p-8 md:p-12 grid md:grid-cols-[1fr_auto] gap-8 items-center">
-      <div>
-        <h2 class="titulo text-white text-3xl md:text-5xl">O que os clientes dizem</h2>
-        <p class="mt-3 text-slate-400 max-w-xl">Leia as avaliações de quem já resolveu com a gente, direto no Google. Já foi atendido? Deixe a sua também.</p>
+    <div class="vidro rounded-[2rem] p-8 md:p-12 grid lg:grid-cols-[.8fr_1.2fr] gap-10 items-center">
+      <div class="text-center lg:text-left">
+        <span class="selo"><span class="w-5 h-5 rounded-full bg-white grid place-items-center"><svg class="w-3 h-3" aria-hidden="true"><use href="#i-google"/></svg></span> Avaliações no Google</span>
+        <div class="mt-6 flex items-end justify-center lg:justify-start gap-4">
+          <span class="titulo text-white text-8xl leading-none" data-nota-geral>4,9</span>
+          <span class="pb-2 text-left">
+            <span class="block text-energia text-2xl tracking-wider" aria-label="Nota de 5 estrelas">★★★★★</span>
+            <span class="block text-slate-400"><span data-total-geral>327</span> avaliações nas 3 lojas</span>
+          </span>
+        </div>
+        <p class="mt-5 text-slate-400">Já foi atendido pela Cardoso? Sua avaliação ajuda outros motoristas da região a encontrar a gente.</p>
       </div>
-      <div id="links-avaliacoes" class="flex flex-col gap-2 md:w-72"></div>
+      <div id="cards-avaliacoes" class="grid gap-3"></div>
     </div>
     <div id="depoimentos" class="hidden mt-6 grid md:grid-cols-3 gap-4"></div>
   </div>
@@ -627,6 +640,7 @@ const LOJAS = {
     whats: '5511962986718', whatsTxt: '(11) 96298-6718',
     tel: '+551130147324', telTxt: '(11) 3014-7324',
     entrega: '09h às 17h',
+    google: { nota: 4.9, total: 215, placeId: 'ChIJJ0xzbZRLzpQRD3hXH7QXvYc' },
     horarios: [['Segunda a sexta', '08h às 18h'], ['Sábado', '08h às 15h'], ['Domingo', 'Fechado'], ['Feriados', '09h às 13h']],
     turnos: semana(h(8), h(18), h(15)),
   },
@@ -637,9 +651,10 @@ const LOJAS = {
     maps: 'Rua Benedito Jandiro Soares, 216, Cipó, Embu-Guaçu - SP',
     // sem número próprio: atendimento pelo WhatsApp/telefone central
     whats: '5511962986718', whatsTxt: '(11) 96298-6718',
-    tel: '+551130147324', telTxt: '(11) 3014-7324',
+    tel: '+5511913400576', telTxt: '(11) 91340-0576',
     central: true,
     entrega: null,
+    google: { nota: 5.0, total: 16, placeId: 'ChIJub852rBLzpQRhSg4ZzlfwqQ' },
     horarios: [['Segunda a sexta', '08h30 às 18h'], ['Sábado', '08h30 às 16h'], ['Domingo', 'Fechado']],
     turnos: semana(h(8, 30), h(18), h(16)),
   },
@@ -651,6 +666,7 @@ const LOJAS = {
     whats: '5511962604092', whatsTxt: '(11) 96260-4092',
     tel: '+5511962604092', telTxt: '(11) 96260-4092',
     entrega: '09h às 17h',
+    google: { nota: 4.9, total: 96, placeId: 'ChIJR8D01aZTzpQR27NaGMG-HUE' },
     horarios: [['Segunda a sexta', '08h às 18h'], ['Sábado', '08h às 16h'], ['Domingo', 'Fechado']],
     turnos: semana(h(8), h(18), h(16)),
   },
@@ -730,6 +746,9 @@ function renderCardsLojas() {
       <p class="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-white">
         <span class="w-2 h-2 rounded-full ${st.aberta ? 'bg-zap' : 'bg-energia'}"></span>${st.txt}
       </p>
+      <a href="${linkAvaliacoes(l)}" target="_blank" rel="noopener" class="mt-2 inline-flex items-center gap-1.5 text-sm text-slate-300 hover:text-white">
+        <span class="text-energia" aria-hidden="true">★</span><strong class="text-white">${virgula(l.google.nota)}</strong> no Google · ${l.google.total} avaliações
+      </a>
       <p class="mt-4 text-slate-300">${l.endereco}<br>${l.cidade}</p>
       <table class="mt-4 w-full text-sm text-slate-400">
         ${l.horarios.map(([d, hr]) => `<tr><td class="py-0.5">${d}</td><td class="text-right font-semibold ${hr === 'Fechado' ? 'opacity-50' : 'text-slate-200'}">${hr}</td></tr>`).join('')}
@@ -741,6 +760,7 @@ function renderCardsLojas() {
           <svg class="w-4 h-4" aria-hidden="true"><use href="#i-zap"/></svg> WhatsApp
         </a>
         <a href="${mapsRota(l)}" target="_blank" rel="noopener" class="inline-flex items-center justify-center rounded-full px-3 py-3 text-sm font-semibold text-white border border-white/15 hover:bg-white/5">Como chegar</a>
+        <a href="${linkAvaliar(l)}" target="_blank" rel="noopener" class="col-span-2 inline-flex items-center justify-center gap-1.5 rounded-full px-3 py-2.5 text-sm font-semibold text-energia border border-energia/30 hover:bg-energia/10">★ Avaliar esta loja no Google</a>
         ${ativa ? '' : `<button type="button" data-escolher="${k}" class="col-span-2 text-sm font-semibold text-slate-300 hover:text-white underline underline-offset-4 decoration-white/30 py-1">Usar esta loja no site</button>`}
       </div>
     </article>`;
@@ -763,12 +783,31 @@ document.getElementById('rodape-lojas').innerHTML = Object.values(LOJAS).map((l)
   <li><a href="${mapsRota(l)}" target="_blank" rel="noopener" class="text-slate-200 hover:text-white">${l.nome}</a><br>${l.endereco}</li>`).join('');
 document.getElementById('ano').textContent = new Date().getFullYear();
 
-document.getElementById('links-avaliacoes').innerHTML = Object.values(LOJAS).map((l) => `
-  <a href="${mapsBusca(l)}" target="_blank" rel="noopener" class="flex items-center gap-3 rounded-full bg-white/5 border border-white/10 hover:border-white/30 px-4 py-3 font-semibold text-white">
-    <span class="w-7 h-7 rounded-full bg-white grid place-items-center"><svg class="w-4 h-4" aria-hidden="true"><use href="#i-google"/></svg></span>
-    ${l.nome}
-    <svg class="w-4 h-4 ml-auto text-slate-400" aria-hidden="true"><use href="#i-seta"/></svg>
-  </a>`).join('');
+// avaliações do Google por loja
+const linkAvaliacoes = (l) => `https://search.google.com/local/reviews?placeid=${l.google.placeId}`;
+const linkAvaliar = (l) => `https://search.google.com/local/writereview?placeid=${l.google.placeId}`;
+const virgula = (n) => n.toFixed(1).replace('.', ',');
+const estrelas = (n) => '★'.repeat(Math.round(n)) + '☆'.repeat(5 - Math.round(n));
+const totalGeral = Object.values(LOJAS).reduce((t, l) => t + l.google.total, 0);
+const notaGeral = Object.values(LOJAS).reduce((t, l) => t + l.google.nota * l.google.total, 0) / totalGeral;
+document.querySelectorAll('[data-nota-geral]').forEach((el) => { el.textContent = virgula(notaGeral); });
+document.querySelectorAll('[data-total-geral]').forEach((el) => { el.textContent = totalGeral; });
+document.getElementById('cards-avaliacoes').innerHTML = Object.values(LOJAS).map((l) => `
+  <div class="rounded-3xl bg-white/[.04] border border-white/10 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center gap-4">
+    <div class="flex items-center gap-4 flex-1">
+      <span class="w-14 h-14 shrink-0 rounded-2xl bg-white/5 border border-white/10 grid place-items-center">
+        <span class="text-xl font-extrabold text-white">${virgula(l.google.nota)}</span>
+      </span>
+      <div class="leading-tight">
+        <p class="font-bold text-white text-lg">${l.nome}</p>
+        <p class="mt-1 text-sm"><span class="text-energia tracking-wider" aria-hidden="true">${estrelas(l.google.nota)}</span> <span class="text-slate-400">${l.google.total} avaliações</span></p>
+      </div>
+    </div>
+    <div class="flex gap-2">
+      <a href="${linkAvaliacoes(l)}" target="_blank" rel="noopener" class="flex-1 sm:flex-none whitespace-nowrap text-center rounded-full border border-white/15 text-white text-sm font-semibold px-3 sm:px-4 py-2.5 hover:bg-white/5">Ver avaliações</a>
+      <a href="${linkAvaliar(l)}" target="_blank" rel="noopener" class="flex-1 sm:flex-none whitespace-nowrap inline-flex items-center justify-center gap-1.5 rounded-full bg-energia text-fundo text-sm font-bold px-3 sm:px-4 py-2.5 hover:bg-energia-claro">★ Avaliar<span class="hidden sm:inline">&nbsp;a loja</span></a>
+    </div>
+  </div>`).join('');
 
 // Preencher SOMENTE com avaliações reais do Google: { nome, quando, texto }
 const DEPOIMENTOS = [];
