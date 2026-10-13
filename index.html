@@ -306,7 +306,7 @@
         <span class="selo"><svg class="w-4 h-4 text-energia" aria-hidden="true"><use href="#i-raio"/></svg> Produtos</span>
         <h2 class="titulo text-white text-4xl md:text-6xl mt-5">Energia para tudo<br class="hidden md:block"> que tem partida.</h2>
       </div>
-      <p class="text-slate-400 text-lg md:max-w-sm">As melhores marcas, como Moura e Eletran. Todas as marcas e modelos de veículo. Orçamento sem compromisso.</p>
+      <p class="text-slate-400 text-lg md:max-w-sm">Moura, Heliar, Bosch, Zetta e Pioneiro. Todas as marcas e modelos de veículo. Orçamento sem compromisso.</p>
     </div>
     <div id="vitrine" class="mt-12 grid sm:grid-cols-2 lg:grid-cols-6 gap-4"></div>
   </div>
@@ -382,24 +382,56 @@
 </section>
 
 <!-- ============ SOBRE ============ -->
-<section id="sobre" class="relative py-24 border-t border-white/5">
-  <div class="max-w-6xl mx-auto px-4 grid lg:grid-cols-[.9fr_1.1fr] gap-14 items-center">
-    <div>
-      <span class="selo"><svg class="w-4 h-4 text-energia" aria-hidden="true"><use href="#i-raio"/></svg> Sobre a Cardoso</span>
-      <h2 class="titulo text-white text-4xl md:text-6xl mt-5">Energia que <span class="grad-texto">te move.</span></h2>
-      <p class="mt-6 text-lg text-slate-400 leading-relaxed">A Cardoso Baterias é especialista em baterias e geradores. São 3 lojas, em Embu-Guaçu, Jd. Ângela e Cipó, com entrega rápida e instalação no local. Nosso trabalho é indicar a peça certa, sem empurrar o que você não precisa.</p>
-      <div class="mt-8 flex flex-wrap gap-3">
-        <a href="#lojas" class="inline-flex items-center gap-2 rounded-full bg-white text-fundo font-bold px-6 py-3.5 hover:bg-energia">Ver as 3 lojas</a>
-        <a href="#" data-zap="Olá! Gostaria de um orçamento sem compromisso." class="inline-flex items-center gap-2 rounded-full border border-white/15 text-white font-semibold px-6 py-3.5 hover:bg-white/5">Orçamento sem compromisso</a>
+<section id="sobre" class="relative overflow-hidden py-24 border-t border-white/5">
+  <div class="absolute right-[-10%] top-10 w-[560px] h-[560px] rounded-full bg-[radial-gradient(circle,rgba(239,68,68,.18),rgba(47,91,255,.18)_50%,transparent_70%)] blur-3xl -z-10" aria-hidden="true"></div>
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="grid lg:grid-cols-[1.1fr_.9fr] gap-14 items-center">
+      <div>
+        <span class="selo"><svg class="w-4 h-4 text-energia" aria-hidden="true"><use href="#i-raio"/></svg> Sobre a Cardoso</span>
+        <h2 class="titulo text-white text-4xl md:text-6xl mt-5">Energia que <span class="grad-texto">te move.</span></h2>
+        <p class="mt-6 text-lg text-slate-400 leading-relaxed max-w-xl">A Cardoso Baterias é especialista em baterias e geradores. São 3 lojas, em Embu-Guaçu, Jd. Ângela e Cipó, com entrega rápida e instalação na hora. Nosso trabalho é indicar a peça certa, sem empurrar o que você não precisa.</p>
+        <p class="mt-8 text-sm font-semibold uppercase tracking-wider text-slate-500">Marcas que você confia</p>
+        <ul class="mt-3 flex flex-wrap gap-2" aria-label="Marcas">
+          <li class="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-white font-semibold">Moura</li>
+          <li class="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-white font-semibold">Heliar</li>
+          <li class="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-white font-semibold">Bosch</li>
+          <li class="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-white font-semibold">Zetta</li>
+          <li class="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-white font-semibold">Pioneiro</li>
+        </ul>
+        <div class="mt-9 flex flex-wrap gap-3">
+          <a href="#lojas" class="inline-flex items-center gap-2 rounded-full bg-white text-fundo font-bold px-6 py-3.5 hover:bg-energia">Ver as 3 lojas</a>
+          <a href="#" data-zap="Olá! Gostaria de um orçamento sem compromisso." class="inline-flex items-center gap-2 rounded-full border border-white/15 text-white font-semibold px-6 py-3.5 hover:bg-white/5">Orçamento sem compromisso</a>
+        </div>
       </div>
+
+      <!-- vídeo institucional (vertical) -->
+      <figure class="relative mx-auto w-full max-w-[340px]">
+        <div class="absolute -inset-6 rounded-[3rem] bg-gradient-to-b from-[#EF4444]/30 via-moura/25 to-energia/25 blur-2xl" aria-hidden="true"></div>
+        <div class="relative rounded-[2.2rem] p-[6px] bg-gradient-to-b from-white/25 to-white/5">
+          <div class="relative rounded-[1.9rem] overflow-hidden bg-black aspect-[9/16]">
+            <video id="video-promo" class="absolute inset-0 w-full h-full object-cover" poster="video/cardoso-promo-capa.jpg" muted loop playsinline preload="none" aria-label="Vídeo da Cardoso Baterias: especialistas em baterias e geradores">
+              <source src="video/cardoso-promo.mp4" type="video/mp4">
+            </video>
+            <button type="button" id="video-som" class="absolute bottom-4 right-4 vidro-forte rounded-full h-11 pl-3 pr-4 flex items-center gap-2 text-white text-sm font-semibold" aria-pressed="false">
+              <svg id="video-som-off" viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5ZM23 9l-6 6M17 9l6 6"/></svg>
+              <svg id="video-som-on" viewBox="0 0 24 24" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5ZM15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>
+              <span id="video-som-txt">Ativar som</span>
+            </button>
+            <button type="button" id="video-play" class="absolute inset-0 grid place-items-center group" aria-label="Reproduzir vídeo">
+              <span class="w-16 h-16 rounded-full bg-white/90 text-fundo grid place-items-center shadow-xl group-hover:scale-105 transition"><svg viewBox="0 0 24 24" class="w-7 h-7 ml-1" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+            </button>
+          </div>
+        </div>
+      </figure>
     </div>
-    <div class="grid sm:grid-cols-2 gap-4">
+
+    <div class="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
       <article class="vidro rounded-3xl p-6">
         <span class="w-12 h-12 rounded-2xl bg-energia/15 text-energia grid place-items-center"><svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z"/></svg></span>
         <h3 class="mt-5 text-xl font-bold text-white">Alta qualidade</h3>
         <p class="mt-1.5 text-slate-400">Baterias das melhores marcas, com nota fiscal e garantia de fábrica.</p>
       </article>
-      <article class="vidro rounded-3xl p-6 sm:translate-y-8">
+      <article class="vidro rounded-3xl p-6">
         <span class="w-12 h-12 rounded-2xl bg-moura/20 text-[#8EA8FF] grid place-items-center"><svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4 2.5-2.5Z"/></svg></span>
         <h3 class="mt-5 text-xl font-bold text-white">Instalação profissional</h3>
         <p class="mt-1.5 text-slate-400">No local, com cuidado com o sistema elétrico do seu carro.</p>
@@ -409,12 +441,12 @@
         <h3 class="mt-5 text-xl font-bold text-white">Garantia e segurança</h3>
         <p class="mt-1.5 text-slate-400">Para você rodar tranquilo. A garantia é informada antes da compra.</p>
       </article>
-      <article class="vidro rounded-3xl p-6 sm:translate-y-8">
+      <article class="vidro rounded-3xl p-6">
         <span class="w-12 h-12 rounded-2xl bg-white/10 text-white grid place-items-center"><svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
         <h3 class="mt-5 text-xl font-bold text-white">Atendimento rápido</h3>
         <p class="mt-1.5 text-slate-400">Rápido e confiável, quando você mais precisa.</p>
       </article>
-    </div>
+    
   </div>
 </section>
 
@@ -524,7 +556,7 @@
     </nav>
     <p class="py-5 border-t border-white/10 text-xs leading-relaxed text-slate-500">
       Indicações de bateria são referências de fábrica e são confirmadas pelo atendente antes da venda. Preços, estoque e garantia sob consulta.
-      A devolução da bateria usada é obrigatória (Lei nº 12.305/2010). Moura e Eletran são marcas de seus respectivos titulares.
+      A devolução da bateria usada é obrigatória (Lei nº 12.305/2010). As marcas citadas pertencem aos seus respectivos titulares.
     </p>
     <div class="py-5 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-2 text-xs text-slate-500">
       <p>© <span id="ano"></span> Cardoso Baterias LTDA.</p>
@@ -1080,7 +1112,7 @@ const FAQ = [
   ['Bateria sofre mais no frio?', 'Sim. No frio a bateria entrega menos energia e o motor pede mais para pegar. Se ela já está fraca, é no frio que ela costuma arriar. Partida lenta nas manhãs frias é sinal para fazer o teste.'],
   ['Quanto tempo dura uma bateria?', 'Em geral entre 2 e 5 anos. Depende do uso, do calor, do estado do sistema elétrico e dos acessórios. Trajetos curtos e carro muito tempo parado reduzem a vida útil.'],
   ['Meu carro tem Start-Stop. Posso usar bateria comum?', 'Não é recomendado. Carros com Start-Stop precisam de bateria EFB ou AGM, que aguentam o liga-desliga constante. A comum dura bem menos nesse sistema.'],
-  ['Quais marcas vocês trabalham?', 'Trabalhamos com as melhores marcas do mercado, como Moura e Eletran, para todas as marcas e modelos de veículo. O atendente indica a melhor opção para o seu carro e o seu bolso.'],
+  ['Quais marcas vocês trabalham?', 'Moura, Heliar, Bosch, Zetta e Pioneiro, para todas as marcas e modelos de veículo. O atendente indica a melhor opção para o seu carro e o seu bolso.'],
   ['Vocês vendem geradores?', 'Sim, a Cardoso também trabalha com geradores. Chame no WhatsApp com o que você precisa alimentar (casa, comércio, evento) que a gente orienta.'],
   ['Preciso entregar a bateria antiga?', 'Sim. A devolução é obrigatória por lei (Lei nº 12.305/2010) e ela vai para reciclagem. Na instalação, o técnico já leva a usada.'],
   ['Vocês fazem entrega e instalação?', 'Sim. As lojas de Embu-Guaçu e Jd. Ângela fazem entregas das 09h às 17h, com instalação onde o carro estiver. Mande sua localização no WhatsApp para confirmar se atendemos sua região.'],
@@ -1242,8 +1274,8 @@ function respostaLocal(msg) {
       zap: null,
     };
   }
-  if (/(marca|eletran|moura|heliar|bosch)/.test(t)) {
-    return { html: 'Trabalhamos com as melhores marcas, como <strong>Moura</strong> e <strong>Eletran</strong>. O atendente indica a melhor opção para o seu carro e o seu bolso.', zap: `Olá! Vim pelo assistente do site. Queria saber das marcas: ${msg}` };
+  if (/(marca|moura|heliar|bosch|zetta|pioneiro)/.test(t)) {
+    return { html: 'Trabalhamos com <strong>Moura, Heliar, Bosch, Zetta e Pioneiro</strong>. O atendente indica a melhor opção para o seu carro e o seu bolso.', zap: `Olá! Vim pelo assistente do site. Queria saber das marcas: ${msg}` };
   }
   if (/(qual bateria|qual a bateria|meu veiculo|meu carro usa|amperagem|quantos ah|que bateria)/.test(t)) {
     return { html: 'Me diz a <strong>marca, modelo e ano</strong> (ex: "Onix 2018" ou "Compass 2022 diesel") que eu indico a bateria certa. Carro com Start-Stop precisa de bateria EFB ou AGM.', zap: null };
@@ -1419,6 +1451,34 @@ void main(){
 /* =========================================================
    INICIALIZAÇÃO
    ========================================================= */
+/* =========================================================
+   VÍDEO INSTITUCIONAL
+   Toca sem som quando aparece na tela e pausa quando sai.
+   Com "reduzir movimento" ligado, só toca se a pessoa clicar.
+   ========================================================= */
+(function videoPromo() {
+  const v = document.getElementById('video-promo');
+  const play = document.getElementById('video-play');
+  const som = document.getElementById('video-som');
+  const reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let pausadoPeloUsuario = false;
+  const tocar = () => { v.play().then(() => play.classList.add('hidden')).catch(() => play.classList.remove('hidden')); };
+  play.addEventListener('click', () => { pausadoPeloUsuario = false; tocar(); });
+  v.addEventListener('click', () => { pausadoPeloUsuario = true; v.pause(); play.classList.remove('hidden'); });
+  som.addEventListener('click', () => {
+    v.muted = !v.muted;
+    som.setAttribute('aria-pressed', String(!v.muted));
+    document.getElementById('video-som-on').classList.toggle('hidden', v.muted);
+    document.getElementById('video-som-off').classList.toggle('hidden', !v.muted);
+    document.getElementById('video-som-txt').textContent = v.muted ? 'Ativar som' : 'Som ligado';
+    if (v.paused) tocar();
+  });
+  new IntersectionObserver(([e]) => {
+    if (e.isIntersecting && !reduz && !pausadoPeloUsuario) tocar();
+    else if (!e.isIntersecting && !v.paused) v.pause();
+  }, { threshold: 0.4 }).observe(v);
+})();
+
 // menu: acende a seção que está na tela
 const linksMenu = [...document.querySelectorAll('header nav a[href^="#"]')];
 const espiao = new IntersectionObserver((entradas) => {
